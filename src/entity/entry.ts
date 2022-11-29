@@ -23,14 +23,16 @@ export class Entry {
         }
     }
 
-    save(saveObj: any) {
+    save(saveObj: Object) {
         this.validate(saveObj);
 
-        window.localStorage.setItem(this.key, saveObj);
+        window.localStorage.setItem(this.key, JSON.stringify(saveObj));
     }
 
     get() {
-        return window.localStorage.getItem(this.key);
+        const obj = window.localStorage.getItem(this.key);
+        if (!obj) return obj;
+        return JSON.parse(obj);
     }
 
     flush() {

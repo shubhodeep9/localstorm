@@ -1,6 +1,6 @@
 {
   "name": "@shubhodeep9/localstorm",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An ORM for localstorage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,9 +12,17 @@
     "orm",
     "triggers"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhodeep9/localstorm.git"
+  },
   "author": "Shubhodeep Mukherjee",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "typescript": "^4.9.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/shubhodeep9/localstorm/issues"
+  },
+  "homepage": "https://github.com/shubhodeep9/localstorm#readme"
 }
