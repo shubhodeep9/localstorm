@@ -30,7 +30,7 @@ export class Entry {
     }
 
     get() {
-        window.localStorage.getItem(this.key);
+        return window.localStorage.getItem(this.key);
     }
 
     flush() {
