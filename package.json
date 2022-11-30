@@ -1,6 +1,6 @@
 {
   "name": "@shubhodeep9/localstorm",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An ORM for localstorage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
