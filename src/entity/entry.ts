@@ -46,7 +46,7 @@ export class Entry {
             this.validate(saveObj);
         }
 
-        // window.localStorage.setItem(this.key, JSON.stringify(saveObj));
+        window.localStorage.setItem(this.key, JSON.stringify(saveObj));
     }
 
     get() {
