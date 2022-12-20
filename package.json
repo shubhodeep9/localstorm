@@ -1,6 +1,6 @@
 {
   "name": "@shubhodeep9/localstorm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "An ORM for localstorage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -18,7 +18,7 @@
   },
   "author": "Shubhodeep Mukherjee",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "typescript": "^4.9.3"
   },
   "bugs": {

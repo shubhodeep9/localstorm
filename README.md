@@ -15,9 +15,19 @@ npm install @shubhodeep9/localstorm
 import { Model, Schema } from '@shubhodeep9/localstorm';
 
 const UserSchema = new Schema({
-    id: "number",
-    name: "string",
-    phone: "string"
+    id: {
+        required: true, // validates the field as mandatory
+        type: Number
+    },
+    name: {
+        required: true,
+        type: String
+    },
+    phone: {
+        required: true,
+        type: String
+    },
+    hobbies: Array // will assume field as optional
 });
 
 const UserStore = Model('user', UserSchema);
@@ -26,8 +36,17 @@ const UserStore = Model('user', UserSchema);
 UserStore.save({
     id: 123,
     name: "Shubho",
-    phone: "91xxxxx934"
+    phone: "91xxxxx934",
+    hobbies: ['sleeping']
 });
+
+// if you want to bypass validations
+UserStore.save({
+    id: 123,
+    name: "Shubho",
+    phone: "91xxxxx934",
+    hobbies: ['sleeping']
+}, true) // pass skipValidation as true
 
 // to retrieve
 const response = UserStore.get();
@@ -37,7 +56,6 @@ UserStore.flush();
 ```
 
 ## To-Do
-- Add more type support
 - Global Store fetch and flush
 - Dynamic Schema
 - Triggers

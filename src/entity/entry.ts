@@ -1,4 +1,4 @@
-import { Schema } from "./schema";
+import { isDefinedType, Schema, SchemaPropGenericTypes } from "./schema";
 
 /**
  * Entry is layer over localstorage with structuring support,
@@ -14,19 +14,39 @@ export class Entry {
     }
 
     validate(saveObj: any) {
+        // validate required fields
+        const requiredProps = this.schema.getRequiredProps();
+        for (let requiredProp of requiredProps) {
+            if (saveObj[requiredProp] === undefined) {
+                throw Error(`Missing required field "${requiredProp}"`);
+            }
+        }
         for (let x in saveObj) {
             const propType = this.schema.get(x);
-            
-            if (propType != typeof saveObj[x]) {
-                throw Error(`Schema mismatch for ${x}`);
+            let intendedType: SchemaPropGenericTypes;
+            if (isDefinedType(propType)) {
+                intendedType = propType.type;
+            } else {
+                intendedType = propType;
+            }
+
+            if (saveObj[x].constructor != intendedType) {
+                throw Error(`Schema mismatch for ${x}, expected ${intendedType.name} got ${saveObj[x].constructor.name}`);
             }
         }
     }
 
-    save(saveObj: Object) {
-        this.validate(saveObj);
+    /**
+     * 
+     * @param saveObj pass the object to be saved in localstorage, it will be validated and stringified
+     * @param skipValidation if you want to skip schema validations, pass this param as true
+     */
+    save(saveObj: Object, skipValidation?: boolean) {
+        if (!skipValidation) {
+            this.validate(saveObj);
+        }
 
-        window.localStorage.setItem(this.key, JSON.stringify(saveObj));
+        // window.localStorage.setItem(this.key, JSON.stringify(saveObj));
     }
 
     get() {
