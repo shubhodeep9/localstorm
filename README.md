@@ -3,6 +3,8 @@
 
 An ORM for `window.localStorage` which no one asked for.
 
+![Downloads on npm](https://img.shields.io/npm/dw/@shubhodeep9/localstorm)
+
 ## Installation
 
 ```sh
