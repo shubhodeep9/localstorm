@@ -46,7 +46,12 @@ export class Entry {
             this.validate(saveObj);
         }
 
+        // execute pre save hook
+        this.schema.executePreSave(saveObj);
+
         window.localStorage.setItem(this.key, JSON.stringify(saveObj));
+
+        this.schema.executePostSave(saveObj);
     }
 
     get() {
@@ -56,6 +61,8 @@ export class Entry {
     }
 
     flush() {
+        this.schema.executePreFlush();
         window.localStorage.removeItem(this.key);
+        this.schema.executePostFlush();
     }
 }
