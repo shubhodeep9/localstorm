@@ -55,10 +55,25 @@ const response = UserStore.get();
 
 // to flush the key
 UserStore.flush();
+
+// hooks
+UserSchema.pre('save', (saveObj) => {
+    // will be executed before saving
+    // do something with saveObj
+})
+
+UserSchema.post('save', (saveObj) => {
+    // will be executed post saving
+    // do something with saveObj
+})
 ```
 
 ## To-Do
 - Global Store fetch and flush
 - Dynamic Schema
 - Triggers
+  - [x] Pre and Post Save
+  - [x] Pre and Post Flush
+  - [ ] Pre and Post validate
+  - [ ] Async hooks
 
