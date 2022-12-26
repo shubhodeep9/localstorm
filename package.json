@@ -1,11 +1,11 @@
 {
   "name": "@shubhodeep9/localstorm",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "An ORM for localstorage",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "rm -rf dist && tsc && cp README.md dist/"
   },
   "keywords": [
     "localstorage",
